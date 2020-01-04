@@ -19,6 +19,18 @@ public class MenuController extends DefaultController {
 	@Autowired
 	private MenuService menuService;
 
+	@GetMapping
+	public DefaultResponse getAllMenus() 
+	{
+		try {
+			List<MenuDto> result = menuService.getAllMenus();
+			return new DefaultResponse().setData(result);
+			
+		} catch (Exception e) {
+			return super.renderErrorResponse(e);
+		}
+	}
+	
 	@GetMapping("/{accountId}")
 	public DefaultResponse getMenusByAccountId(@PathVariable("accountId") Long accountId)
 	{

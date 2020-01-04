@@ -19,6 +19,18 @@ public class AccountController extends DefaultController {
 	@Autowired
 	private AccountService accountService;
 
+	@GetMapping
+	public DefaultResponse getAllAccounts() 
+	{
+		try {
+			List<AccountDto> result = accountService.getAllAccounts();
+			return new DefaultResponse().setData(result);
+			
+		} catch (Exception e) {
+			return super.renderErrorResponse(e);
+		}
+	}
+	
 	@GetMapping("/{roleId}")
 	public DefaultResponse getAccountsByRoleId(@PathVariable("roleId") Long roleId)
 	{

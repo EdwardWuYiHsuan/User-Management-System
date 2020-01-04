@@ -1,6 +1,7 @@
 package com.edward.permission.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -15,12 +16,26 @@ import com.edward.permission.entity.Menu;
 import com.edward.permission.enumeration.APICode;
 import com.edward.permission.exception.ApiException;
 import com.edward.permission.repository.AccountRepository;
+import com.edward.permission.repository.MenuRepository;
 
 @Service
 public class MenuService {
 
 	@Autowired
 	private AccountRepository accountRepo;
+	@Autowired
+	private MenuRepository menuRepo;
+	
+	public List<MenuDto> getAllMenus() 
+	{
+		List<MenuDto> menuList = new ArrayList<>();
+		Iterable<Menu> menuIter = menuRepo.findAll();
+		for (Iterator<Menu> iterator = menuIter.iterator(); iterator.hasNext();) {
+			menuList.add(MenuDto.valueOf(iterator.next()));
+		}
+		
+		return menuList;
+	}
 	
 	public List<MenuDto> getMenusByAccountId(Long accountId) throws Exception
 	{

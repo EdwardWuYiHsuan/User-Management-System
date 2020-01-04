@@ -1,0 +1,37 @@
+S Generated Files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compiled Source #
+*.class
+
+# Logs #
+*.log
+
+# Eclipse #
+.classpath
+.project
+.settings/
+bin/
+tmp/
+
+# Packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.war
+*.ear
+*.rar
+*.tar
+*.zip
+
+# Maven / Ant #
+target/
+

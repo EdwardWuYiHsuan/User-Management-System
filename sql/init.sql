@@ -8,12 +8,12 @@ CREATE TABLE `account` (
   UNIQUE KEY `UK_ACCOUNT_ACCOUNT` (`account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('edward_01', 'Edward', 'M');
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('andy_02', 'Andy', 'M');
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('jack_03', 'Jack', 'M');
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('emma_04', 'Emma', 'F');
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('isabella_05', 'Isabella', 'F');
-INSERT INTO `account` (`account`, `name`, `sex`) VALUES ('sophia_06', 'Sophia', 'F');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('1', 'edward_01', 'Edward', 'M');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('2', 'andy_02', 'Andy', 'M');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('3', 'jack_03', 'Jack', 'M');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('4', 'emma_04', 'Emma', 'F');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('5', 'isabella_05', 'Isabella', 'F');
+INSERT INTO `account` (`account_id`, `account`, `name`, `sex`) VALUES ('6', 'sophia_06', 'Sophia', 'F');
 
 # Role
 CREATE TABLE `role` (
@@ -23,9 +23,9 @@ CREATE TABLE `role` (
   UNIQUE KEY `UK_ROLE_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `role` (`name`) VALUES ('employee');
-INSERT INTO `role` (`name`) VALUES ('accounting');
-INSERT INTO `role` (`name`) VALUES ('engineer');
+INSERT INTO `role` (`role_id`, `name`) VALUES ('1', 'employee');
+INSERT INTO `role` (`role_id`, `name`) VALUES ('2', 'accounting');
+INSERT INTO `role` (`role_id`, `name`) VALUES ('3', 'engineer');
 
 # Account_Role
 CREATE TABLE `account_role` (
@@ -58,10 +58,10 @@ CREATE TABLE `menu` (
   FOREIGN KEY `FK_MENU_ROLE_ID` (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('1', 'API-Get_Employee_Information');
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('2', 'API-Get_Company_Money');
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('2', 'API-Withdrawal_Company_Money');
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('3', 'API-Configure_Company_Internet');
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('3', 'API-Adjust_Employee_Permission');
-INSERT INTO `menu` (`role_id`, `detail`) VALUES ('3', 'API-Configure_Door_Access_Card');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('1', '1', 'API-Get_Employee_Information');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('2', '2', 'API-Get_Company_Money');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('3', '2', 'API-Withdrawal_Company_Money');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('4', '3', 'API-Configure_Company_Internet');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('5', '3', 'API-Adjust_Employee_Permission');
+INSERT INTO `menu` (`menu_id`, `role_id`, `detail`) VALUES ('6', '3', 'API-Configure_Door_Access_Card');
 

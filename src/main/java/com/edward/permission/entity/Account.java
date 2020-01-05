@@ -48,4 +48,40 @@ public class Account implements Serializable {
 	@Getter @Setter
 	private Set<AccountRole> accountRole = new HashSet<AccountRole>(0);
 	
+	public Account(Account.Builder builder) {
+		this.account = builder.account;
+		this.name = builder.name;
+		this.sex = builder.sex;
+	}
+	
+	public static Account.Builder builder() {
+		return new Account.Builder();
+	}
+	
+	public static final class Builder {
+		
+		private String account;
+		private String name;
+		private Character sex;
+		
+		public Account.Builder account(String account) {
+			this.account = account;
+			return this;
+		}
+		
+		public Account.Builder name(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		public Account.Builder sex(Character sex) {
+			this.sex = sex;
+			return this;
+		}
+		
+		public Account build() {
+			return new Account(this);
+		}
+	}
+	
 }

@@ -28,13 +28,16 @@ public class AccountRepositoryTest {
 		final String accountRef = "test_account", nameRef = "test_name";
 		final Character sexRef = Character.valueOf('M');
 		
+		// given resource.
 		Account account = Account.builder().account(accountRef).name(nameRef).sex(sexRef).build();
 		account = testEntityManager.persist(account);
 		testEntityManager.flush();
 
+		// when do a function.
 		Optional<Account> accountOpt = accountRepo.findById(account.getAccountId());
 		Assert.assertTrue(accountOpt.isPresent());
 		
+		// then test.
 		Account testAccount = accountOpt.get();
 		Assert.assertEquals(accountRef, testAccount.getAccount());
 		Assert.assertEquals(nameRef, testAccount.getName());
